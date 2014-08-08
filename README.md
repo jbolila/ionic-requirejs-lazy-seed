@@ -1,5 +1,5 @@
-Ionic RequireJS Lazy Seed **NOT WORKING**
+Ionic RequireJS Lazy Seed
 =====================
 
-This seed isn't ready to grow! Sorry.
+
 
