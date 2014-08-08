@@ -1,4 +1,4 @@
-/* global define */
+/* global define requirejs */
 
 define([], function() {
   'use strict';

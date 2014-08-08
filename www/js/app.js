@@ -42,6 +42,19 @@ define(['config'],
             } else {
               $stateProvider.state(state, {
                 url: options.url,
+                // resolve: ['$q', '$log', '$timeout',
+                //   function($q, $log, $timeout) {
+                //     var deferred = $q.defer();
+                //
+                //     $log.debug('>>>>> RESOLVE CALLED!');
+                //
+                //     $timeout(function() {
+                //       deferred.reject();
+                //     }, 50);
+                //
+                //     return deferred.promise;
+                //   }
+                // ],
                 views: options.views
               });
             }

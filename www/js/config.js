@@ -19,9 +19,9 @@ define(['common/services/dependencyResolverFor'],
           url: '/dash',
           views: {
             'tab-dash': {
+              resolve: dependencyResolverFor(['tabs/controllers/main']),
               templateUrl: 'templates/tab-dash.html',
-              controller: 'DashCtrl',
-              resolve: dependencyResolverFor(['tabs/controllers/main'])
+              controller: 'DashCtrl'
             }
           }
         },
@@ -30,9 +30,9 @@ define(['common/services/dependencyResolverFor'],
           url: '/friends',
           views: {
             'tab-friends': {
+              resolve: dependencyResolverFor(['tabs/factories/friends', 'tabs/controllers/main']),
               templateUrl: 'templates/tab-friends.html',
-              controller: 'FriendsCtrl',
-              resolve: dependencyResolverFor(['tabs/factories/friends', 'tabs/controllers/main'])
+              controller: 'FriendsCtrl'
             }
 
           }
@@ -42,9 +42,9 @@ define(['common/services/dependencyResolverFor'],
           url: '/friend/:friendId',
           views: {
             'tab-friends': {
+              resolve: dependencyResolverFor(['tabs/factories/friends', 'tabs/controllers/main']),
               templateUrl: 'templates/friend-detail.html',
-              controller: 'FriendDetailCtrl',
-              resolve: dependencyResolverFor(['tabs/factories/friends', 'tabs/controllers/main'])
+              controller: 'FriendDetailCtrl'
             }
           }
         },
@@ -53,9 +53,9 @@ define(['common/services/dependencyResolverFor'],
           url: '/account',
           views: {
             'tab-account': {
+              resolve: dependencyResolverFor(['tabs/controllers/main']),
               templateUrl: 'templates/tab-account.html',
-              controller: 'AccountCtrl',
-              resolve: dependencyResolverFor(['tabs/controllers/main'])
+              controller: 'AccountCtrl'
             }
           }
         }
