@@ -1,14 +1,12 @@
-/* global define angular */
+/* global define requirejs */
 
-define(['config'],
-  function(config) {
+define(['config', 'angular', 'ionicAngular'],
+  function(config, angular) {
     'use strict';
 
 
     var app = angular.module('app', [
-      'ngAnimate',
-      'ngSanitize',
-      'ui.router'
+      'ionic'
     ]);
 
     app.config([
@@ -32,7 +30,6 @@ define(['config'],
 
         if (config.routes !== undefined) {
           angular.forEach(config.routes, function(options, state) {
-            console.log("define state " + state);
             if (options.abstract) {
               $stateProvider.state(state, {
                 url: options.url,
@@ -42,19 +39,19 @@ define(['config'],
             } else {
               $stateProvider.state(state, {
                 url: options.url,
-                // resolve: ['$q', '$log', '$timeout',
-                //   function($q, $log, $timeout) {
-                //     var deferred = $q.defer();
-                //
-                //     $log.debug('>>>>> RESOLVE CALLED!');
-                //
-                //     $timeout(function() {
-                //       deferred.reject();
-                //     }, 50);
-                //
-                //     return deferred.promise;
-                //   }
-                // ],
+                resolve: ['$q', '$log', '$rootScope',
+                  function($q, $log, $rootScope) {
+                    var deferred = $q.defer();
+
+                    requirejs(options.dependencies, function() {
+                      $rootScope.$apply(function() {
+                        deferred.resolve();
+                      });
+                    });
+
+                    return deferred.promise;
+                  }
+                ],
                 views: options.views
               });
             }
